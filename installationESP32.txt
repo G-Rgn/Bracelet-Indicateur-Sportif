@@ -1,4 +1,7 @@
 Pour installer l'ESP32 sur l'environnement Arduino
+
 - Télécharger les drivers si besoin : https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers
+
 - Sur le logiciel Arduino, Fichier->Préférences et dans URL de gestionnaire de cartes supplémentaires, ajouter : https://dl.espressif.com/dl/package_esp32_index.json
+
 - Outil->Type de carte->gestionnaire de carte, et installer ESP32
