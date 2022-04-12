@@ -1,0 +1,15 @@
+Activer le mode HCI dans les options de développement
+Désactiver le bluetooth
+Activer le bluetooth
+Se connecter à l'appareil souhaité
+Réaliser les actions souhaitées
+Redémarrer le téléphone
+	Activer le Débogage USB dans les options de développement
+	Brancher le téléphone à l'ordinateur (donner l'accès aux fichiers)
+	Lancer une invite de commande dans le dossier où se trouver adb.exe
+	Trouver l'emplacement du fichier btsnoop_hci.log
+	Executer adb pull /xxx/yy/btsnoop_hci.log
+ou
+	Brancher le téléphone à l'ordinateur (donner l'accès aux fichiers)
+	Récupérer le fichier de log directement dans l'explorateur de fichier (chez Xiaomi Mi 9, celui-ci se trouve dans le dossier MIUI/debug_log/common/)
+Il se peut que le fichier soit protégé et auquel cas il faut rooter votre téléphone. Cela n'est pas forcément recommandé et nous n'avons pas réalisé cette démarche
