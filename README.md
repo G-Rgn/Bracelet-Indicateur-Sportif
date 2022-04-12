@@ -28,7 +28,14 @@ For any information that could not find its source here, do not hesitate to cons
 
     - To add it in the Arduino IDE, sketch > include a library > add to library.ZIP then select the .ZIP folder.  
     
-   ![arduino](https://user-images.githubusercontent.com/103428967/162925298-8279f7a3-b1ed-4dcd-89ca-db82edb6d662.png)
+   ![arduino](https://user-images.githubusercontent.com/103428967/162925298-8279f7a3-b1ed-4dcd-89ca-db82edb6d662.png)  
+   
+5. Final step
+    - Download this GitHub files
+    - Open it on your IDE
+    - Connect your the LilyGo to the arduino and the arduino to the computer
+    - Select the good port
+    - Upload the code
 
 
 
