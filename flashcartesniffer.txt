@@ -1,16 +1,30 @@
-Pour convertir un hex en bin
-srec_cat dans le dossier où il est installé
-srec_cat file.hex -Intel -o fichier.bin -Binary
+Pour flasher le sniffer NRF51822
 
+- Télécharger openocd (version 0.9.0 minimum) via le lien ci-dessous
+  https://freddiechopin.info/en/download/category/4-openocd4
 
-aller dans le dossier où se trouve openOCD
-lancer un cmd
-taper openOCD -f openOCD.cfg (fichier de config disponible dans le dossier du NRF51)
-ouvrir un nouveau cmd
-taper telnet localhost 4444
-une fois dans le serveur telnet :
-executer :
-init
-halt
-nrf51 mass_erase
-program file.hex 0
+- Décompressser le fichier télécharger dans un dossier connu
+
+- Connecter le STLink au sniffer et le brancher au pc
+
+- Aller dans le dossier où est installé openOCD
+
+- Dans le sous dossier bin-x64, coller le fichier openOCD.cfg (fichier de config disponible dans le dossier du NRF51)
+
+- Dans le sous dossier bin-x64, coller le fichier sniffer.hex (fichier de config disponible dans le dossier du NRF51)
+
+- Lancer l'invite de commande dans ce dossier
+
+- Taper la commande suivante : openOCD -f openOCD.cfg 
+
+- Ouvrir un nouvel invite de commande
+
+- Taper la commande suivante : telnet localhost 4444
+
+- Une fois dans le serveur telnet, exécuter les commandes suivantes une par une:
+	init
+	halt
+	nrf51 mass_erase
+	program sniffer.hex 0
+
+- Le sniffer est maintenant flashé
