@@ -1,6 +1,5 @@
-# LilyGo_ESPNOW
+#  Arduino LilyGo setup  
 
-## Arduino LilyGo setup  
 ### Informations
 Through this manual, we will trace the steps that allow us to quickly arrive at the same result as the product we have. This is a tutorial that is meant to be as detailed and efficient as possible in order to avoid wasting any time in reworking the project.  
 This work is the result of an adaptation and improvement of existing code. We started from the version of the code of the product [LILYGO®TTGO](https://github.com/Xinyuan-LilyGO/LilyGo-T-Wristband) as well as those of the sensor MAX30102.  
@@ -45,12 +44,3 @@ For any information that could not find its source here, do not hesitate to cons
     - Press it a second time to calculate SPO2
     - Press it during 3 seconds to enter in deep sleep
     - During deep sleep, touch again to wake up the bracelet
-
-## ESPNOW setup
-### Informations
-For the purpose of this project, we are using the ESPNOW protocol to establish a communication between the LilyGo (slave) and an ESP32 (master).  
-Note that it is very important to have the MAC adress of each device to allow them to communicate.  
-
-### ESP32 Code
-
-### ESPNOW in LilyGO code
