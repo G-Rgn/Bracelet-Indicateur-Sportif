@@ -1,0 +1,16 @@
+Pour convertir un hex en bin
+srec_cat dans le dossier où il est installé
+srec_cat file.hex -Intel -o fichier.bin -Binary
+
+
+aller dans le dossier où se trouve openOCD
+lancer un cmd
+taper openOCD -f openOCD.cfg (fichier de config disponible dans le dossier du NRF51)
+ouvrir un nouveau cmd
+taper telnet localhost 4444
+une fois dans le serveur telnet :
+executer :
+init
+halt
+nrf51 mass_erase
+program file.hex 0

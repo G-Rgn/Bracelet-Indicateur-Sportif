@@ -1,0 +1,7 @@
+Copier le dossier extcap dans le logiciel Wireshark : Help > About > Folders > extcap (personnal ou global selon les souhaits)
+Une fois la copie réalisée, installer les requirements en éxecutant la commande suivante : pip install -r requirements.txt
+Ajouter le profil du sniffer (Profile_nRF_Sniffer_Bluetooth_LE) en copiant le dossier dans le dossier profiles (Roaming/Wireshark/profiles)
+Redémarrer Wireshark
+Choisir le profil du sniffer (Editer > Configuration Profiles) puis double-cliquer sur le sniffer reconnu. La capture du trafic est lancée.
+Choisir l'appareil à surveiller dans l'onglet Device, à partir du nom de l'appareil s'il est reconnu ou de son adresse MAC.
+La communication est sur écoute

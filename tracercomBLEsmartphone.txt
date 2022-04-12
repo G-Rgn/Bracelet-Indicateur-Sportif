@@ -1,0 +1,9 @@
+Activer le bluetooth
+Activer le mode HCI Bluetooth
+Réaliser les commandes bluetooth
+Désactiver puis réactiver le bluetooth
+Redémarrer le téléphone
+Aller chercher le fichier btsnoop_hci.log dans MIUI/debug_log/common
+Ouvrir avec Wireshark
+Une fois ouvert, trouver les trames envoyées (Send Write Command)
+Aller dans Bluetooth Attribute Protocol pour trouver la valeur du message
