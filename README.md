@@ -24,7 +24,7 @@ For any information that could not find its source here, do not hesitate to cons
     - In the context of this project, the following libraries may be useful:  
       - [TFT_eSPI](https://github.com/Bodmer/TFT_eSPI)  
       - [SparkFun](https://github.com/sparkfun/SparkFun_LSM9DS1_Arduino_Library)  
-      - [WiFiManager](https://github.com/tzapu/WiFiManager)  
+      - [PCF8563_Library](https://github.com/lewisxhe/PCF8563_Library)  
 
     - To add it in the Arduino IDE, sketch > include a library > add to library.ZIP then select the .ZIP folder.  
     
