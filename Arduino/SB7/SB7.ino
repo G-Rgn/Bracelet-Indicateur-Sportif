@@ -1,16 +1,15 @@
 /*
-     Code pour manipuler la montre SB 18+
+     Code pour manipuler la montre SB 7+
 */
+
 
 #include <NimBLEDevice.h>
 
 void scanEndedCB(NimBLEScanResults results);
 
-
 /*
    Initialisation des variables
 */
-
 static NimBLEAdvertisedDevice* advDevice;
 static bool doConnect = false;
 bool scanEnd = false;
@@ -20,17 +19,16 @@ String command;
 std::vector<NimBLERemoteService*>* remoteServ;
 std::vector<NimBLERemoteCharacteristic*>* remoteChar;
 std::vector<NimBLERemoteDescriptor*>* remoteDesc;
-NimBLEClient* clientBLE;
+NimBLEClient* clientBLE ;
 
 /*
-   Classe Client BLE
-
+   Initialisation des variables
 */
 class ClientCallbacks : public NimBLEClientCallbacks {
     void onConnect(NimBLEClient* pClient) {
-      remoteServ = pClient->getServices(true); //Récupération des services de l'appareil pClient
+      remoteServ = pClient->getServices(true);
       for (int i = 0; i < (*remoteServ).size(); i++) {
-        Serial.println((*remoteServ).at(i)->getUUID().toString().c_str()); //Affichage de l'identifiant du service
+        Serial.println((*remoteServ).at(i)->getUUID().toString().c_str());
       }
       Serial.println((*remoteServ).size());
       Serial.println("Connected");
@@ -42,15 +40,15 @@ class ClientCallbacks : public NimBLEClientCallbacks {
       */
       pClient->updateConnParams(120, 120, 0, 60);
     };
+
     /*
        Lors de la déconnexion du client
     */
     void onDisconnect(NimBLEClient* pClient) {
       Serial.print(pClient->getPeerAddress().toString().c_str());
       Serial.println(" Disconnected - Starting scan");
-      NimBLEDevice::getScan()->start(scanTime, scanEndedCB); //On redémarre un scan
+      NimBLEDevice::getScan()->start(scanTime, scanEndedCB);
     };
-
 };
 
 
@@ -61,12 +59,11 @@ class AdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
       Serial.print("Advertised Device found: ");
       Serial.println(advertisedDevice->toString().c_str());
 
-      if (advertisedDevice->isAdvertisingService(NimBLEUUID("180a"))) //si l'appareil découvert a comme service de connexion 180a
+      if (advertisedDevice->getName() == "SB 7+")//si l'appareil découvert a commer nom SB 7+
       {
         Serial.println("Found Our Service");
         /* on coupe le scan pour se connecter */
         NimBLEDevice::getScan()->stop();
-        /* On s'identifie comme un client */
         NimBLEDevice::setMTU(185);
         Serial.println(NimBLEDevice::getMTU());
 
@@ -83,7 +80,7 @@ class AdvertisedDeviceCallbacks: public NimBLEAdvertisedDeviceCallbacks {
 void notifyCB(NimBLERemoteCharacteristic* pRemoteCharacteristic, uint8_t* pData, size_t length, bool isNotify) {
   Serial.println("");
   /*
-     Affiche la Notification/Indication reçue
+    Affiche la Notification/Indication reçue
   */
   std::string str = (isNotify == true) ? "Notif" : "Indication";
   str += " from ";
@@ -102,12 +99,10 @@ void notifyCB(NimBLERemoteCharacteristic* pRemoteCharacteristic, uint8_t* pData,
     Serial.print("-");
   }
   Serial.println("");
-  /*
-     Si la characteristique qui nous notifie est celle du rythme cardiaque
-  */
-  if (pRemoteCharacteristic->getUUID() == NimBLEUUID("f000efe3-0451-4000-0000-00000000b000")) {
+
+  if (pRemoteCharacteristic->getUUID() == NimBLEUUID("00002d00-0000-1000-8000-00805f9b34fb")) {
     Serial.print("HEART RATE : ");
-    Serial.print(*(pData + 12));
+    Serial.print(*(pData + 4));
     Serial.println(" BPM");
     Serial.println("");
   }
@@ -117,8 +112,8 @@ void notifyCB(NimBLERemoteCharacteristic* pRemoteCharacteristic, uint8_t* pData,
 
 /* Affiche la fin du scan */
 void scanEndedCB(NimBLEScanResults results) {
-  Serial.println("Scan Ended");
   scanEnd = true;
+  Serial.println("Scan Ended");
 }
 
 
@@ -127,10 +122,7 @@ static ClientCallbacks clientCB;
 
 
 /* Gère la création du client et se connecte avec le serveur */
-bool connectToServer() {
-  NimBLEClient* pClient = nullptr;
-
-  /* Recherche de clients existants **/
+/* Recherche de clients existants **/
   if (NimBLEDevice::getClientListSize()) {
     /* Si l'appareil à connecté est déjà connu on se reconnecte
         Sinon on retourne false
@@ -278,6 +270,7 @@ bool connectToServer() {
   return true;
 }
 
+
 void setup () {
   /* Initialisation de la communication Série */
   Serial.begin(115200);
@@ -308,6 +301,7 @@ void setup () {
 }
 
 
+
 void loop () {
   /* Tourne en boucle tant qu'aucun appareil à connecter est trouvé */
   while (!doConnect & !scanEnd) {
@@ -335,99 +329,28 @@ void loop () {
         if (command.equals("heart")) {
           getHeartRate(clientBLE);
         }
-        /* Alarme */
-        else if (command.equals("alarm")) {
-          alarm(clientBLE);
-        }
-        /* Réglage de la luminosité (0, 1, ou 2 (par défaut)*/
-        else if (command.indexOf("lum") >= 0) {
-          if (command.indexOf("0") > 0) {
-            luminosite(clientBLE, 0);
-          }
-          else if (command.indexOf("1") > 0) {
-            luminosite(clientBLE, 1);
-          }
-          else {
-            luminosite(clientBLE, 2);
-          }
-        }
-        /* réveilhh:mm */
-        else if (command.indexOf("reveil" >= 0)) {
-          String heure = command.substring(6, 8);
-          String minute = command.substring(9, 11);
 
-          Serial.print("HEURE = ");
-          Serial.println(heure);
-
-          Serial.print("MINUTE = ");
-          Serial.println(minute);
-
-          reveil(clientBLE, heure.toInt(), minute.toInt());
-        }
       }
     }
   }
 }
 
-/* fonctions permettant d'écrire les trames à la charactéristique */
+
+
+/* fonctions permettant de récupérer le rythme cardiaque */
 void getHeartRate(NimBLEClient* pClient) {
   NimBLERemoteService* serviceHeart = nullptr;
   NimBLERemoteCharacteristic* chrHeart = nullptr;
-  serviceHeart = pClient->getService("f000efe0-0451-4000-0000-00000000b000");
+  serviceHeart = pClient->getService("000018d0-0000-1000-8000-00805f9b34fb");
 
   Serial.println(serviceHeart->getUUID().toString().c_str());
-  chrHeart = serviceHeart->getCharacteristic(NimBLEUUID("f000efe1-0451-4000-0000-00000000b000"));
-
+  chrHeart = serviceHeart->getCharacteristic(NimBLEUUID("00002d01-0000-1000-8000-00805f9b34fb"));
+  
   Serial.println(chrHeart->getUUID().toString().c_str());
-  uint8_t notificationOn[] = {0xfc, 0x09, 0x02, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte)((~(252 + 9 + 2) + 1) & 0xff)}; //trame qui lance une mesure de rythme cardiaque avec le CRC
+  uint8_t notificationOn[] = {0xab, 0x05, 0x0f, 0x01, 0x4e}; //trame qui lance une mesure de rythme cardiaque
 
-  /* Ecriture dans la charactéristique */
-  if (chrHeart->writeValue((uint8_t*)notificationOn, 20, true)) {
+  if (chrHeart->writeValue((uint8_t*)notificationOn, 5, true)) {
     Serial.print("Wrote new value to: ");
     Serial.println(chrHeart->getUUID().toString().c_str());
-  }
-}
-
-void alarm(NimBLEClient* pClient) {
-  NimBLERemoteService* serviceAlarm = nullptr;
-  NimBLERemoteCharacteristic* chrAlarm = nullptr;
-  serviceAlarm = pClient->getService("f000efe0-0451-4000-0000-00000000b000");
-  chrAlarm = serviceAlarm->getCharacteristic(NimBLEUUID("f000efe1-0451-4000-0000-00000000b000"));
-  uint8_t notificationOn[] = {0xfc, 0x10, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte)((~(252 + 16 + 1) + 1) & 0xff)}; //trame qui lance une alerte
-
-  /* Ecriture dans la charactéristique */
-  if (chrAlarm->writeValue((uint8_t*)notificationOn, 20, true)) {
-    Serial.print("Wrote new value to: ");
-    Serial.println(chrAlarm->getUUID().toString().c_str());
-  }
-}
-
-void luminosite(NimBLEClient* pClient, uint8_t value) {
-  NimBLERemoteService* serviceLum = nullptr;
-  NimBLERemoteCharacteristic* chrLum = nullptr;
-  serviceLum = pClient->getService("f000efe0-0451-4000-0000-00000000b000");
-  chrLum = serviceLum->getCharacteristic(NimBLEUUID("f000efe1-0451-4000-0000-00000000b000"));
-  const uint8_t notificationOn[] = { 0xfc, 0x0f, 0x04, (byte)value, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte)((~(252 + 15 + 4 + value) + 1) & 0xff)}; //trame qui change la luminosité
-
-  /* Ecriture dans la charactéristique */
-  if (chrLum->writeValue((uint8_t*)notificationOn, 20, true)) {
-    Serial.print("Wrote new value to: ");
-    Serial.println(chrLum->getUUID().toString().c_str());
-  }
-}
-
-
-void reveil(NimBLEClient* pClient, uint8_t heure, uint8_t minute) {
-  NimBLERemoteService* serviceReveil = nullptr;
-  NimBLERemoteCharacteristic* chrReveil = nullptr;
-  serviceReveil = pClient->getService("f000efe0-0451-4000-0000-00000000b000");
-  chrReveil = serviceReveil->getCharacteristic(NimBLEUUID("f000efe1-0451-4000-0000-00000000b000"));
-
-  const uint8_t notificationOn[] = {0xfc, 0x01, 0x00, 0x01, 0x02, 0x02, 0x00, 0x00, (byte)heure, (byte)minute, 0x08, 0x30, 0x09, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, (byte)((~(252 + 1 + 1 + 2 + 2 + heure + minute) + 1) & 0xff)}; //trame qui met un réveil
-
-  /* Ecriture dans la charactéristique */
-  if (chrReveil->writeValue((uint8_t*)notificationOn, 20, true)) {
-    Serial.print("Wrote new value to: ");
-    Serial.println(chrReveil->getUUID().toString().c_str());
   }
 }
