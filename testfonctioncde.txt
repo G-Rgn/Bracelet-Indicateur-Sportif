@@ -1,0 +1,23 @@
+00 02
+02 D0
+07 02
+08 02
+09 00		-> arret mesure heart rate
+09 02 	-> heart rate
+09 03
+09 04
+09 05
+09 06
+09 08
+0A 02
+0B 02
+0C 00 	-> vibration en mode déconnecté
+0C 02
+0D 02
+10 00 01	-> alert
+10 02
+11 00
+11 02
+17 02
+90 00
+90 02
