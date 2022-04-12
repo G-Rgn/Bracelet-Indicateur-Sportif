@@ -15,5 +15,5 @@ Activer le mode développeur sur votre téléphone Android (Paramètres > A prop
 jusqu'à ce que votre téléphone vous indique l'activation de ce mode).  
 Vous devez aussi télécharger adb sur votre ordinateur. [Lien de téléchargement ADB](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)  
 ### Récupérer les logs de la communication
-Connectez-vous à votre téléphone avec adb puis suivez les démarches indiquées dans le fichier correspondant
-Coucou
+Veuillez suivre la démarche indiquée dans le fichier correspondant.  
+Une fois le fichier récupéré, ouvrez le avec Wireshark.
