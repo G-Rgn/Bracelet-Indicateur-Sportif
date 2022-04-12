@@ -1,6 +1,4 @@
-# LilyGo_ESPNOW
-
-### Read before use
+# Read before use
 
 The goal of this project is to establish a communication between a LilyGo bracelet (slave) and an ESP32 (master).
 The LilyGo can measure heart rate as well as oxygenation levels in the blood. The ESP master can order a remote measurement via the ESP-NOW protocol.  
