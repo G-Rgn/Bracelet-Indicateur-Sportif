@@ -6,7 +6,7 @@ In the file `Lilygo-EspNow-Bpm-Spo2` you will find the steps to follow and the c
 In the second file `Master-ESP32`, we provide the code for the ESP master which works with a button.  
 Everything is explained and commented in order to facilitate the reproduction of this project.
 
-### Installation process
+## Installation process
 **This step is mandatory and common for the following steps**
 1. Download Arduino IDE
 2. Add the ESP32 packages
