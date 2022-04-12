@@ -7,7 +7,7 @@ In the second file `Master-ESP32`, we provide the code for the ESP master which 
 Everything is explained and commented in order to facilitate the reproduction of this project.
 
 ## Installation process
-**This step is mandatory and commune for the next parts**
+**This step is mandatory and common for the following steps**
 1. Download Arduino IDE
 2. Add the ESP32 packages
     - Go to File > Preferences and add `https://dl.espressif.com/dl/package_esp32_index.json`  
