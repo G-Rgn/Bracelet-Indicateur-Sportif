@@ -37,5 +37,10 @@ For any information that could not find its source here, do not hesitate to cons
     - Select the good port
     - Upload the code
 
+6. When a touch s detected, it will change the mode
 
+    - Press for the first time to calculate the BPM
+    - Press it a second time to calculate SPO2
+    - Press it during 3 seconds to enter in deep sleep
+    - During deep sleep, touch again to wake up the bracelet
 
