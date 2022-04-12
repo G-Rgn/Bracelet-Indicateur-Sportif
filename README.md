@@ -8,7 +8,7 @@ For any information that could not find its source here, do not hesitate to cons
 ### Installation process
 1. Dowload the Arduino IDE
 2. Add the ESP32 packages
-    - Go to File > Preferences and add "https://dl.espressif.com/dl/package_esp32_index.json"  
+    - Go to File > Preferences and add `https://dl.espressif.com/dl/package_esp32_index.json`  
     ![arduino1](https://user-images.githubusercontent.com/103428967/162929793-0f206ff7-50c5-46e0-b38b-08fba3cb1b58.png)  
 
 3. Dowload the driver  
