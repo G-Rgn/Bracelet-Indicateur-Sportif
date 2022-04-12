@@ -7,15 +7,12 @@ It should be noted that this sensor does not have a green LED, which impacts the
 For any information that could not find its source here, do not hesitate to consult the codes that have served as a starting point.
 
 ### Installation process
-1. Dowload the Arduino IDE
-2. Add the ESP32 packages
-    - Go to File > Preferences and add `https://dl.espressif.com/dl/package_esp32_index.json`  
-    ![arduino1](https://user-images.githubusercontent.com/103428967/162929793-0f206ff7-50c5-46e0-b38b-08fba3cb1b58.png)  
-
-3. Dowload the driver  
+1. Download Arduino IDE and set the ESP32 in your preferences as it is mentionned in the first `README`
+  
+2. Dowload the driver  
     - [CP21xx Drivers](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)  
   
-4. Add librairies to Arduino IDE
+3. Add librairies to Arduino IDE
     - Go to the GitHub of the library  
     - Click on " Code " then " Download ZIP "  
     - Download the folder in your Arduino space  
@@ -31,14 +28,14 @@ For any information that could not find its source here, do not hesitate to cons
     
    ![arduino](https://user-images.githubusercontent.com/103428967/162925298-8279f7a3-b1ed-4dcd-89ca-db82edb6d662.png)  
    
-5. Final step
+4. Final step
     - Download the files from this GitHub
     - Open it on your IDE
     - Connect your the LilyGo to the arduino and the arduino to the computer
     - Select the good port
     - Upload the code
 
-6. When a touch is detected, it will change the mode
+5. When a touch is detected, it will change the mode
 
     - Press for the first time to calculate the BPM
     - Press it a second time to calculate SPO2
