@@ -23,7 +23,7 @@ uint8_t broadcastAddress[] = {0x30, 0x83, 0x98, 0xDE, 0x0A, 0x34};              
 // Button
 const int buttonPin = 22;
 int buttonState = 0;
-int envoi_suceed;
+int envoi_succeed;
 
 // Structure use in the ESP-NOW protocol, (must match the receiver structure)
 typedef struct struct_message {
@@ -44,7 +44,7 @@ void OnDataSent(const uint8_t *mac_addr, esp_now_send_status_t status) {
  Serial.print(F("\r\nMaster packet sent:\t"));
  Serial.println(status == ESP_NOW_SEND_SUCCESS ? "Delivery Success" : "Delivery Fail"); // Print the state of the delivery
  if(status == ESP_NOW_SEND_SUCCESS) {                                               // If the message is send
-  envoi_suceed = 1;                                                                 // This variable get the value 1
+  envoi_succeed = 1;                                                                 // This variable get the value 1
  }
 }
 
@@ -107,14 +107,14 @@ void loop() {
 
     if (buttonState == LOW) {                                                       // If it is pressed
       delay(1000);                                                                  // Wait 1 second
-      envoi_suceed = 0;                                                             // Set envoi_suceed to 0
+      envoi_succeed = 0;                                                             // Set envoi_suceed to 0
       
       strcpy(myData.a, nom);                                                        // Set values to send
       myData.bpm = -1;                                                              // bpm takes 0
       myData.spo2 = -1;                                                             // spo2 takes 0 too
       esp_err_t result0 = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData)); // Check the sending
       delay(1000);                                                                  // Wait 1 second
-      while(envoi_suceed == 0) {                                                    // While the message is not received
+      while(envoi_succeed == 0) {                                                    // While the message is not received
         delay(1000);                                                                // Wait 1 second
         esp_err_t result0 = esp_now_send(broadcastAddress, (uint8_t *) &myData, sizeof(myData)); // Try to send it again
         delay(1000);                                                                // Wait 1 second
