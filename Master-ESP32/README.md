@@ -12,7 +12,7 @@ It is important to note that in the codes provided, **the MAC addresses will hav
 1. Download Arduino IDE and set the ESP32 in your preferences as it is mentionned in the first `README`
 2. Find the MAC Adress of your devices :
     - Download the `MacAdress` script
-    - Run it on all your device (master and slave)
+    - Run it on all your devices (master and slave)
     - Write those adresses somewhere, you will need them later
 4. Download the `Master-ESP`script
 5. Replace the Mac Adress line 21 with the one you find in the previous part 2 (see image1 below)
