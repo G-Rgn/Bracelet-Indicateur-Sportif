@@ -31,7 +31,7 @@ For any information that could not find its source here, do not hesitate to cons
 4. Final step
     - Download the files from this GitHub
     - Open it on your IDE
-    - Connect your the LilyGo to the arduino and the arduino to the computer
+    - Connect your LilyGo to the arduino and the arduino to the computer
     - Select the good port
     - Upload the code
 
