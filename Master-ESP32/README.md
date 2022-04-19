@@ -26,9 +26,9 @@ The code is written in such a way that when the user presses the button, it send
     - Wires (x4)
     - Button (x1)
     - Breadboard (x1)
-2. Put the ESP and the buton on the breadboard
+2. Put the ESP and the button on the breadboard
 3. Follow the diagrams below for the installation of the wires
-4. Adjust the code (line 24) if your buton isn't set on the pin 22  
+4. Adjust the code (line 24) if your button isn't set on the pin 22  
   
 ![Image1](https://user-images.githubusercontent.com/103428967/162972124-e1a6ab04-90ca-44b2-9bd2-a3c3e4be9ebe.png)  
 <p align="center">Image 1 (above)</p>  
