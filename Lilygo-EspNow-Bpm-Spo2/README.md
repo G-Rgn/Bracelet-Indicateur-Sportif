@@ -7,7 +7,7 @@ It should be noted that this sensor does not have a green LED, which impacts the
 For any information that could not find its source here, do not hesitate to consult the codes that have served as a starting point.
 
 ### Installation process
-1. Download Arduino IDE and set the ESP32 in your preferences as it is mentionned in the first `README`
+1. Download Arduino IDE and set the ESP32 in your preferences as it is mentionned in the first [README](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif)
   
 2. Dowload the driver  
     - [CP21xx Drivers](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers)  
