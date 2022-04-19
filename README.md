@@ -2,7 +2,7 @@
 # Understand how Bluetooth communication works between the phone and the watch
 ## Method with the BLEFriend sniffer
 > Flash to be done if the product is not in sniffer format  
-> [Perform Flash](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif/blob/ConnectESP32/flashcartesniffer.txt).
+> [Perform Flash](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif/tree/ConnectESP32/Flash_NRF51).
   
 Install the module according to the steps indicated in the [Installation](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif/blob/ConnectESP32/installationSniffer.txt).  
 Once the installation is done, you can retrieve all the data that has passed between the device that is traced and the outside.  
