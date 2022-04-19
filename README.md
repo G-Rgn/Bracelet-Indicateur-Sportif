@@ -8,7 +8,7 @@ Install the module according to the steps indicated in the [Installation](https:
 Once the installation is done, you can retrieve all the data that has passed between the device that is traced and the outside.  
 ### Data to exploit
 The most interesting data are the Bluetooth service that is requested, as well as the messages sent and received.  
-The Bluetooth connection and the creation of the GATT server is done automatically thanks to the [NimBLE-Arduino library] (https://github.com/h2zero/NimBLE-Arduino).  
+The Bluetooth connection and the creation of the GATT server is done automatically thanks to the [NimBLE-Arduino library](https://github.com/h2zero/NimBLE-Arduino).  
 The frames from the communication will allow to learn how the phone communicates with the watch and thus reproduce the same behavior with the ESP32.  
 ## Method with HCI mode on an Android smartphone
 ### Mandatory point
