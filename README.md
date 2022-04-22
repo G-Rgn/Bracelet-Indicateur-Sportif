@@ -4,7 +4,7 @@
 > Flash to be done if the product is not in sniffer format  
 > [Perform Flash](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif/tree/ConnectESP32/Flash_NRF51)  
 >   
-> Branchement du ST Link  
+> Plugging ST Link  
 >   
 > ![IMG_20180726_121308-169x300](https://user-images.githubusercontent.com/71140515/164702079-e4ad2e67-f073-44dc-91f1-7bd02a7f8d86.jpg) ![IMG_20180726_121408-300x169](https://user-images.githubusercontent.com/71140515/164701891-5b72366f-4b68-45bf-949a-9f2a029b5ad8.jpg)  
 > Ground (Blue)
@@ -20,7 +20,7 @@ Install the module according to the steps indicated in the [Installation](https:
 Once the installation is done, you can retrieve all the data that has passed between the device that is traced and the outside.   
   
 ![Capture d’écran trame](https://user-images.githubusercontent.com/71140515/164703493-ea2b8237-56b7-4523-ac54-d78a7dcfa256.png)
-> Exemple de trame trouvée  
+> Example of a communication  
 
 ### Data to exploit
 The most interesting data are the Bluetooth service that is requested, as well as the messages sent and received.  
