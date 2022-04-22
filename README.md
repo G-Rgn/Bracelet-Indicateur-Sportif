@@ -35,6 +35,9 @@ until your phone tells you this mode is enabled).
 You may potentially need to download adb on your computer to find the file. [ADB download link](https://dl.google.com/android/repository/platform-tools-latest-windows.zip)  
 ### Recovering the communication logs
 Please follow the procedure indicated in the corresponding file to get the [HCI logs](https://github.com/G-Rgn/Bracelet-Indicateur-Sportif/blob/ConnectESP32/hciBluetooth.txt).  
+> Activate HCI  
+![image5](https://user-images.githubusercontent.com/71140515/164704929-d5f0c208-f2ee-401c-b951-edc044e44006.png)  
+
 Once the file is recovered, open it with Wireshark.  
 ## Study of the application reserved for the watch model
 1. Download the desired application in APK format
